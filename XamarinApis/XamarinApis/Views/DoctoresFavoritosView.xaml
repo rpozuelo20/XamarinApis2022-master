@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApis.Views.DoctoresFavoritosView"
+             xmlns:local="clr-namespace:XamarinApis">
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=DoctoresFavoritosViewModel}">
+            <Label Text="Doctores Favoritos"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding DoctoresFavoritos}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Apellido}"/>
+                                <Label Text="{Binding Especialidad}"/>
+                                <Label Text="{Binding Salario}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApis.Views.DoctorDetailsView"
+             xmlns:converters="clr-namespace:XamarinApis.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ConverterFavoritoImages x:Key="converterFavoritos"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Doctor Details"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Doctor.Apellido}"
+                   FontSize="Medium"
+                   TextColor="Blue"/>
+            <Label Text="{Binding Doctor.Especialidad}"
+                   FontSize="Medium"
+                   TextColor="Blue"/>
+            <Label Text="{Binding Doctor.Salario, StringFormat='Salario: {0}'}"
+                   FontSize="Medium"
+                   TextColor="Blue"/>
+            <Label Text="{Binding Doctor.Favorito, StringFormat='Salario: {0}'}"
+                   FontSize="Medium"
+                   TextColor="Blue"/>
+            <Image WidthRequest="50" HeightRequest="50" 
+                   Source="{Binding Doctor.Favorito, Converter={StaticResource converterFavoritos}}"/>
+            <Button Text="Delete"
+                    Command="{Binding DeleteDoctor}"/>
+            <!--Cuando ponemos {Binding .}, ese 'punto' significa el mismo objeto 'doctor'-->
+            <Button Command="{Binding SeleccionarFavorito}"
+                    CommandParameter="{Binding .}"
+                    Text="Favorito"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

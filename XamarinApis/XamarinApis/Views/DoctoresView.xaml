@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApis.Views.DoctoresView"
+             xmlns:viewmodels="clr-namespace:XamarinApis.ViewModels"
+             xmlns:local="clr-namespace:XamarinApis"
+             xmlns:converters="clr-namespace:XamarinApis.Converters">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ConverterFavoritoImages x:Key="converterFavoritos"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout x:Name="stackDoctores"
+            BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=DoctoresListViewModel}">
+            <Label Text="Doctores Api"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   VerticalOptions="Start" 
+                   HorizontalOptions="CenterAndExpand" />
+            <Button Text="Mostrar Doctores"
+                    Command="{Binding MostrarDoctores}"/>
+            <Button Text="Mostrar Favoritos"
+                    Command="{Binding MostrarFavoritos}"/>
+            <ListView ItemsSource="{Binding Doctores}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Apellido}"
+                                       FontSize="Medium"
+                                       TextColor="Blue"/>
+                                <Image WidthRequest="50" HeightRequest="50" 
+                                Source="{Binding Favorito, Converter={StaticResource converterFavoritos}}"/>
+                                <Button Command="{Binding BindingContext.ShowDoctor, Source={x:Reference stackDoctores}}"
+                                        CommandParameter="{Binding IdDoctor}"
+                                        Text="Details"
+                                        HorizontalOptions="End"/>
+                                <Button Command="{Binding BindingContext.DeleteDoctor, Source={x:Reference stackDoctores}}"
+                                        CommandParameter="{Binding IdDoctor}"
+                                        Text="Delete"
+                                        HorizontalOptions="End"/>
+                                <!--Cuando ponemos {Binding .}, ese 'punto' significa el mismo objeto 'doctor'-->
+                                <Button Command="{Binding BindingContext.SeleccionarFavorito, Source={x:Reference stackDoctores}}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Favorito"
+                                        HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApis.Views.CochesView"
+             xmlns:viewmodels="clr-namespace:XamarinApis.ViewModels">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.BindingContext>
+                <viewmodels:CochesListViewModel/>
+            </StackLayout.BindingContext>
+            <Label Text="Api Coches"
+                VerticalOptions="Start" FontSize="45"
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Cargar coches"
+                    Command="{Binding MostrarCoches}"/>
+            <CarouselView ItemsSource="{Binding Coches}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Marca}"
+                                   TextColor="PaleVioletRed"
+                                   FontSize="Large"/>
+                            <Label Text="{Binding Modelo}"
+                                   TextColor="Red"
+                                   FontSize="Large"/>
+                            <Label Text="{Binding Conductor}"
+                                   TextColor="Fuchsia" FontSize="Large"/>
+                            <Image Source="{Binding Imagen}"
+                                   HeightRequest="400"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
