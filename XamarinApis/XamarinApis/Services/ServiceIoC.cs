@@ -27,6 +27,7 @@ namespace XamarinApis.Services
             builder.RegisterType<DoctoresListViewModel>();
             builder.RegisterType<DoctorDetailsViewModel>();
             builder.RegisterType<DoctoresFavoritosViewModel>();
+            builder.RegisterType<NuevoDoctorViewModel>();
             //  Esta parte es para poder configurar appsettings:
             string resourceName = "XamarinApis.appsettings.json";
             Stream stream = GetType().GetTypeInfo().Assembly.GetManifestResourceStream(resourceName);
@@ -63,6 +64,13 @@ namespace XamarinApis.Services
             get
             {
                 return this._Container.Resolve<DoctoresFavoritosViewModel>();
+            }
+        }
+        public NuevoDoctorViewModel NuevoDoctorViewModel
+        {
+            get
+            {
+                return this._Container.Resolve<NuevoDoctorViewModel>();
             }
         }
     }

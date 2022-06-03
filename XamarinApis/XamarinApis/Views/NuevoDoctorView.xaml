@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApis.Views.NuevoDoctorView"
+             xmlns:local="clr-namespace:XamarinApis"
+             BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=NuevoDoctorViewModel}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Nuevo Doctor!"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry Text="{Binding Doctor.Apellido}" Placeholder="Apellido"/>
+            <Entry Text="{Binding Doctor.Especialidad}" Placeholder="Especialidad"/>
+            <Entry Text="{Binding Doctor.Salario}" Placeholder="Salario"/>
+            <Entry Text="{Binding Doctor.IdHospital}" Placeholder="Hospital"/>
+            <Button Command="{Binding InsertarDoctor}"
+                    Text="Crear Doctor"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
