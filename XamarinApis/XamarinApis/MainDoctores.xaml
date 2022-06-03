@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApis.MainDoctores"
+                  xmlns:local="clr-namespace:XamarinApis"
+                  xmlns:behaviorspack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack">
+    <MasterDetailPage.Master>
+        <ContentPage BackgroundColor="White"
+                     Title="App Doctores"
+                     BindingContext="{Binding Source={x:Static local:App.ServiceLocator}, Path=MainDoctoresViewModel}">
+            <StackLayout Orientation="Vertical">
+                <StackLayout BackgroundColor="Silver"
+                         HeightRequest="60"
+                             Padding="10">
+                    <Label Text="MainDoctores Menu"
+                           FontSize="Large"
+                           TextColor="Black"
+                           FontAttributes="Bold"/>
+                </StackLayout>
+                <ListView x:Name="lsvMenu"
+                          RowHeight="60"
+                          SeparatorVisibility="None"
+                          BackgroundColor="White"
+                          ItemsSource="{Binding MenuPrincipal}">
+                    <ListView.Behaviors>
+                        <behaviorspack:SelectedItemBehavior 
+                            Command="{Binding PaginaSeleccionada}"/>
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical"
+                                             Spacing="0"
+                                             Padding="10">
+                                    <!--<Image Source="{Binding Icono}"/>-->
+                                    <Label Text="{Binding Titulo}"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           />
+                                    <Label Text="Example text to the small label."
+                                           FontSize="Small"
+                                           TextColor="Black"
+                                           />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage></NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
