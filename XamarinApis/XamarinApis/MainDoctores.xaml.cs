@@ -18,7 +18,8 @@ namespace XamarinApis
         public MainDoctores()
         {
             InitializeComponent();
-            ObservableCollection<MasterPageItem> menu = new ObservableCollection<MasterPageItem>
+            /*
+             ObservableCollection<MasterPageItem> menu = new ObservableCollection<MasterPageItem>
             {
                 new MasterPageItem
                 {
@@ -42,8 +43,10 @@ namespace XamarinApis
             this.lsvMenu.ItemsSource = menu;
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(MainPage)));
             this.lsvMenu.ItemSelected += LsvMenu_ItemSelected;
+             */
         }
-
+        /*
+         
         private void LsvMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = (MasterPageItem)e.SelectedItem;
@@ -51,5 +54,6 @@ namespace XamarinApis
             Detail = new NavigationPage((Page)Activator.CreateInstance(type));
             IsPresented = false;
         }
+         */
     }
 }

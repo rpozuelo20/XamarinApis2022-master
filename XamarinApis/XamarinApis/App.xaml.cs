@@ -20,7 +20,7 @@ namespace XamarinApis
         {
             InitializeComponent();
 
-            MainPage = new MainDoctores();
+            MainPage = App.ServiceLocator.MainDoctores;
         }
 
         protected override void OnStart()
